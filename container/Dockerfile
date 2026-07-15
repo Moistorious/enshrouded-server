@@ -2,7 +2,6 @@ FROM debian:13-slim
 
 ENV DEBIAN_FRONTEND="noninteractive"
 ENV STEAM_APP_ID="2278520"
-ENV HOME="/root"
 ENV ENSHROUDED_PATH="/root/enshrouded"
 ENV ENSHROUDED_CONFIG="${ENSHROUDED_PATH}/enshrouded_server.json"
 ENV EXTERNAL_CONFIG="0"
