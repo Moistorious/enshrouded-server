@@ -1,0 +1,19 @@
+services:
+  enshrouded:
+    container_name: enshrouded-server
+    image: docker-registry.devon.page/enshrouded-server:latest
+    ports:
+      - "15637:15637/udp"
+      - "27015:27015/udp"
+    environment:
+      - SERVER_NAME=Enshrouded Containerized
+      - SERVER_PASSWORD=PleaseChangeMe
+      - PORT=15637
+      - SERVER_SLOTS=16
+      - SERVER_IP=0.0.0.0
+    volumes:
+      - enshrouded-savegame:/root/enshrouded/savegame
+    restart: unless-stopped
+
+volumes:
+  enshrouded-savegame:

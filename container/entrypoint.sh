@@ -36,13 +36,7 @@ else
         echo "$(timestamp) ERROR: EXTERNAL_CONFIG set but config not found at $ENSHROUDED_CONFIG"
         exit 1
     fi
-    if [ "$(stat -c '%u:%g' "$ENSHROUDED_CONFIG")" != "10000:10000" ] && [ "$(stat -c '%u:%g' "$ENSHROUDED_CONFIG")" != "0:10000" ]; then
-        echo "$(timestamp) ERROR: External config ownership must be 10000:10000 or 0:10000"
-        echo "$(timestamp) INFO: Current ownership is $(stat -c '%u:%g' "$ENSHROUDED_CONFIG")"
-        echo "$(timestamp) INFO: Adjust ownership and restart the container (e.g. sudo chown 10000:10000 /path/to/your/enshrouded_server.json)"
-        exit 1
-    fi
-    echo "$(timestamp) INFO: External config found and ownership looks good"
+    echo "$(timestamp) INFO: External config found"
 fi
 
 ########################################
@@ -71,7 +65,7 @@ fi
 if [ "$EXTERNAL_CONFIG" -eq 0 ]; then
     if [ ! -f "$ENSHROUDED_CONFIG" ]; then
         echo "$(timestamp) INFO: Server config not present, copying example"
-        cp /home/steam/enshrouded_server_example.json "$ENSHROUDED_CONFIG"
+        cp /root/enshrouded_server_example.json "$ENSHROUDED_CONFIG"
     fi
 
     echo "$(timestamp) INFO: Updating Enshrouded Server configuration"
