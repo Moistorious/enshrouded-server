@@ -101,6 +101,17 @@ QUERY_PORT_HEX=$(printf '%04X' "$QUERY_PORT")
 
 mkdir -p "$ENSHROUDED_PATH/savegame" "$ENSHROUDED_PATH/logs"
 
+# Restore savegame from NAS if the local (fast) copy is empty
+NAS_SAVE_PATH="${NAS_SAVE_PATH:-}"
+if [ -n "$NAS_SAVE_PATH" ] && [ -d "$NAS_SAVE_PATH" ]; then
+    if [ -z "$(ls -A "$ENSHROUDED_PATH/savegame" 2>/dev/null)" ]; then
+        echo "$(timestamp) INFO: Local savegame empty, restoring from $NAS_SAVE_PATH"
+        cp -a "$NAS_SAVE_PATH/." "$ENSHROUDED_PATH/savegame/"
+    else
+        echo "$(timestamp) INFO: Local savegame present, skipping restore"
+    fi
+fi
+
 # Check savegame directory is writable
 if ! touch "$ENSHROUDED_PATH/savegame/.permtest"; then
     echo "$(timestamp) ERROR: Savegame directory is not writable"
