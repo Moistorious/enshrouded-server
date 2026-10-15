@@ -26,6 +26,7 @@ RUN dpkg --add-architecture i386 \
         jq \
         locales \
         lib32gcc-s1 \
+        libvulkan1 \
         python3 \
     && echo 'LANG="en_US.UTF-8"' > /etc/default/locale \
     && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
