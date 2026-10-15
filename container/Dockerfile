@@ -12,7 +12,6 @@ ENV STEAM_SDK64_PATH="/root/.steam/sdk64"
 ENV STEAM_SDK32_PATH="/root/.steam/sdk32"
 ENV STEAM_COMPAT_CLIENT_INSTALL_PATH="$STEAMCMD_PATH"
 ENV STEAM_COMPAT_DATA_PATH="${STEAMCMD_PATH}/steamapps/compatdata/${STEAM_APP_ID}"
-ENV UMU_ID="0"
 
 RUN dpkg --add-architecture i386 \
     && apt-get update \

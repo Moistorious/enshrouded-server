@@ -121,7 +121,7 @@ export WINEDEBUG=-all
 echo "$(timestamp) INFO: Starting Enshrouded Dedicated Server"
 
 "${STEAMCMD_PATH}/compatibilitytools.d/GE-Proton${GE_PROTON_VERSION}/proton" \
-    run "$ENSHROUDED_PATH/enshrouded_server.exe" &
+    runinprefix "$ENSHROUDED_PATH/enshrouded_server.exe" &
 
 # Wait for server to be up by checking UDP port
 echo "$(timestamp) INFO: Waiting for server to be up and listening on UDP port $QUERY_PORT"
